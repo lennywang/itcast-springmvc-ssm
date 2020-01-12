@@ -2,6 +2,7 @@ package com.itcast.ssm.controller;
 
 import com.itcast.ssm.bean.Item;
 import com.itcast.ssm.bean.QueryVo;
+import com.itcast.ssm.exception.MessageException;
 import com.itcast.ssm.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,8 +29,16 @@ public class ItemController {
     private ItemService itemService;
 
     @RequestMapping("/itemList.action")
-    public ModelAndView itemList() {
+    public ModelAndView itemList() throws MessageException {
+
+//        int i = 1 / 0;
+
         List<Item> itemList = itemService.getItemList();
+
+//        if (1==1){
+//            throw new MessageException("商品信息不能为空");
+//        }
+
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("itemList", itemList);
         modelAndView.setViewName("itemList");
@@ -72,5 +81,4 @@ public class ItemController {
         modelAndView.setViewName("success");
         return modelAndView;
     }
-
 }

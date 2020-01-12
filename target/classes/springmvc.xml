@@ -19,6 +19,16 @@
         </property>
     </bean>
 
+    <!--异常-->
+    <bean class="com.itcast.ssm.exception.CusomExceptionResolver"/>
+    <!--拦截器-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="com.itcast.ssm.interceptor.Interceptor1"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
     <mvc:annotation-driven/>
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/jsp/"/>
